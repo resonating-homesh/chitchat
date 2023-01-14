@@ -5,7 +5,7 @@ import React from "react";
 const ProfileModal = ({ user, children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <div>
+    <>
       {children ? (
         <span onClick={onOpen}> {children} </span>
       ) : (
@@ -34,7 +34,7 @@ const ProfileModal = ({ user, children }) => {
           </ModalFooter>
         </ModalContent>
       </Modal>
-    </div>
+    </>
   );
 };
 
