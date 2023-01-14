@@ -113,7 +113,7 @@ const renameGroup = asyncHandler(async (req, res) => {
   const updatedChat = await Chat.findByIdAndUpdate(
     chatId,
     {
-      chatName,
+      chatName: chatName,
     },
     {
       new: true,
@@ -154,7 +154,8 @@ const addToGroup = asyncHandler(async (req, res) => {
     }
   }
   else {
-    res.json("not admin");
+    res.status(404);
+    throw new Error("You are not admin!");
   }
 });
 
@@ -173,6 +174,16 @@ const exitGroup = asyncHandler(async (req, res) => {
       .populate("users", "-password")
       .populate("groupAdmin", "-password");
   
+  if (loginId == groupAdminCheck.groupAdmin._id) {
+    const user1 = groupAdminCheck.users[0];
+    removed = await Chat.findByIdAndUpdate(
+      chatId,
+      { $set: { groupAdmin: user1 } },
+      { new: true }
+    )
+      .populate("users", "-password")
+      .populate("groupAdmin", "-password");
+  }
     if (!removed) {
       res.status(404);
       throw new Error("Chat Not Found");
@@ -181,7 +192,8 @@ const exitGroup = asyncHandler(async (req, res) => {
     }
   }
   else {
-    res.json("not admin or self");
+    res.status(404);
+    throw new Error("You are not admin!");
   }
 });
 
