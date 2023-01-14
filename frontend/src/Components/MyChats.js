@@ -7,11 +7,13 @@ import ChatLoading from "./ChatLoading";
 import { getSender } from "./ChatLogic";
 import GroupChatModal from "./GroupChatModal";
 
+
 const MyChats = ({ fetchAgain, setFetchAgain }) => {
   const { test, setTest, selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
   const [alpha, setAlpha] = useState([]);
   const [loggedUser, setLoggedUser] = useState();
   const toast = useToast();
+
 
   const fetchChats = async () => {
     try {
@@ -21,11 +23,8 @@ const MyChats = ({ fetchAgain, setFetchAgain }) => {
         },
       };
       const { data } = await axios.get("/api/chat", config);
-      console.log(data);
       setAlpha(data);
-      console.log(alpha);
       setChats(data);
-      console.log(chats);
     } catch (error) {
       toast({
         title: "Error Occured!",
@@ -93,7 +92,7 @@ const MyChats = ({ fetchAgain, setFetchAgain }) => {
                 display="flex"
                 flexDir="row"
                 alignItems="center"
-                onClick={() => setSelectedChat(chat) && setTest(chat)}
+                onClick={() => setSelectedChat(chat)}
                 cursor="pointer"
                 bg={selectedChat === chat ? "#38B2AC" : "#E8E8E8"}
                 color={selectedChat === chat ? "white" : "black"}
@@ -104,7 +103,7 @@ const MyChats = ({ fetchAgain, setFetchAgain }) => {
               >
                 <Image
                   mr={3}
-                  src={chat.users[1].pic}
+                  src={chat.users[0].pic}
                   borderRadius="full"
                   boxSize="40px"
                 ></Image>
