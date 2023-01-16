@@ -24,6 +24,9 @@ add the peoeple in the group!
 
 5) You can search for new friends by searching in the searchbar!
 ![6](https://user-images.githubusercontent.com/75970868/212694387-a84a4054-d975-4685-bb80-bc7a8cf5b680.png)
+when the other user is typing you get to know it, by the typing indicator on the bottom-left side of the chatbox!
+![Screenshot 2023-01-16 195848](https://user-images.githubusercontent.com/75970868/212701538-cd410a10-6de5-4363-9eee-918bf9eced50.png)
+
 
 6) If anyone sends you message, you will be modified immediately on the top right corner having notification bell icon.
 ![8](https://user-images.githubusercontent.com/75970868/212695489-23265a75-78f4-47a2-80e4-ba266f0be31a.png)
